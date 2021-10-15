@@ -1,3 +1,6 @@
+leftWristX=0;
+rightWrist=0;
+difference=0;
 function setup(){
     video=createCapture(VIDEO);
     video.size(550,500);
@@ -11,6 +14,9 @@ function setup(){
 
 function draw(){
 background("#ffff4f");
+textSize(difference);
+fill("black");
+text("Bensitha",100,100);
 }
 
 function modelLoaded(){
@@ -20,5 +26,8 @@ function modelLoaded(){
 function getposes(results){
     if(results.length > 0){
         console.log(results);
+        leftWristX=results[0].pose.leftWrist.x;
+        rightWrist=results[0].pose.rightWrist.x;
+        difference=floor(leftWristX-rightWrist);
     }
 }
